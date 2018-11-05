@@ -15,8 +15,8 @@ public class Controller {
     private ContactService contactService;
     @GetMapping("/search/by_name")
     public ResponseEntity<List<Contact>> getContactByName(@RequestParam String name,
-                                                          @RequestParam(name = "start", value = "0") int start,
-                                                          @RequestParam(name = "size", value = "10") int size) {
+                                                          @RequestParam(value = "start", defaultValue = "0") int start,
+                                                          @RequestParam(value = "size", defaultValue = "10") int size) {
         try {
             return ResponseEntity.ok(contactService.findContactByName(name, start, size));
         } catch(Exception ex) {
@@ -42,8 +42,8 @@ public class Controller {
 
     @PutMapping("/update/by_email")
     public ResponseEntity<Boolean> updateContact(@RequestParam String email,
-                                                 @RequestParam(name = "phone", value = "") String phone,
-                                                 @RequestParam(name = "name", value = "") String name) {
+                                                 @RequestParam(value = "phone", defaultValue = "") String phone,
+                                                 @RequestParam(value = "name", defaultValue = "") String name) {
         try {
             return ResponseEntity.ok(contactService.updateContact(email, phone, name));
         } catch(Exception ex) {
