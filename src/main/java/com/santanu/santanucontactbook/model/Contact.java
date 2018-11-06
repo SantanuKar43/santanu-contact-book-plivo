@@ -62,4 +62,13 @@ public class Contact {
         if(null != name && !name.equals("")) this.name = name;
         if(null != phone) this.phone = phone;
     }
+
+    @Override
+    public boolean equals(Object contact1) {
+        if(!(contact1 instanceof Contact)) return false;
+        Contact contact = (Contact) contact1;
+        return this.name.equals(contact.getName())
+                && this.email.equals(contact.getEmail())
+                && this.getPhone().equals(contact.getPhone());
+    }
 }

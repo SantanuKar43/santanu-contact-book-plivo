@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -37,11 +38,11 @@ public class ContactService {
         return true;
     }
 
+    @Transactional
     public Boolean updateContact(String email, String name, String phone) {
         Contact contact = repository.findByEmail(email);
-        contact.updateFrom(name, Long.parseLong(phone));
-        repository.deleteByEmail(email);
-        repository.save(contact);
+        contact.updateFrom(name, phone.equals("") ? null : Long.parseLong(phone));
+        saveContact(contact);
         return true;
     }
 }
