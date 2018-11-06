@@ -1,2 +1,0 @@
-DROP TABLE IF EXISTS contact;
-CREATE TABLE contact(id id PRIMARY KEY, name VARCHAR(100), email VARCHAR(100), phone INTEGER);
