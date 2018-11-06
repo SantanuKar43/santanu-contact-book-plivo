@@ -39,7 +39,7 @@ public class ContactService {
     }
 
     @Transactional
-    public Boolean updateContact(String email, String name, String phone) {
+    public Boolean updateContact(String email, String phone, String name) {
         Contact contact = repository.findByEmail(email);
         contact.updateFrom(name, phone.equals("") ? null : Long.parseLong(phone));
         repository.save(contact);
