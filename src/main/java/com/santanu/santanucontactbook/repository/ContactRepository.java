@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface ContactRepository extends PagingAndSortingRepository<Contact, Long> {
-    public List<Contact> findByName(String name, Pageable pageable);
+    public List<Contact> findByNameContaining(String name, Pageable pageable);
     public Contact findByEmail(String email);
     public void deleteByEmail(String email);
 }

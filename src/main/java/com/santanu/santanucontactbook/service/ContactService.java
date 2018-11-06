@@ -17,11 +17,12 @@ public class ContactService {
     public Contact findContactByEmail(String email) {
         return repository.findByEmail(email);
     }
+
     public Boolean saveContact(Contact contact) { repository.save(contact); return true; }
 
     public List<Contact> findContactByName(String name, int start, int size) {
         Pageable pageable = PageRequest.of(start, size);
-        return repository.findByName(name, pageable);
+        return repository.findByNameContaining(name, pageable);
     }
 
     @Transactional
