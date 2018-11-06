@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
-public class Controller {
+public class ContactController {
     @Autowired
     private ContactService contactService;
     @GetMapping("/search/by_name")
