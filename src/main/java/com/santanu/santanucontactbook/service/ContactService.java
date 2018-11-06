@@ -42,7 +42,7 @@ public class ContactService {
     public Boolean updateContact(String email, String name, String phone) {
         Contact contact = repository.findByEmail(email);
         contact.updateFrom(name, phone.equals("") ? null : Long.parseLong(phone));
-        saveContact(contact);
+        repository.save(contact);
         return true;
     }
 }

@@ -1,9 +1,12 @@
 package com.santanu.santanucontactbook.model;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "contact")
+@DynamicUpdate
 public class Contact {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)

@@ -42,8 +42,8 @@ public class ContactController {
 
     @PutMapping("/update/by_email")
     public ResponseEntity<Boolean> updateContact(@RequestParam String email,
-                                                 @RequestParam(value = "phone", defaultValue = "") String phone,
-                                                 @RequestParam(value = "name", defaultValue = "") String name) {
+                                                 @RequestParam(value = "phone", defaultValue = "", required = false) String phone,
+                                                 @RequestParam(value = "name", defaultValue = "", required = false) String name) {
         try {
             return ResponseEntity.ok(contactService.updateContact(email, phone, name));
         } catch(Exception ex) {
