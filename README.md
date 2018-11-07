@@ -24,8 +24,8 @@ Deployed on heroku and added Swagger:
 * GET /api/search/by_email?email=*email*
 
 **Update**
-* PUT /api/update/by_id?id=*id*
-* PUT /api/update/by_email?email=*email*
+* PUT /api/update/by_id?id=*id*&email=*optional*&name=*optional*&phone=*optional*
+* PUT /api/update/by_email?email=*email*&name=*optional*&phone=*optional*
 
 **Delete**
 * DELETE /api/delete/by_email?email=*email*
