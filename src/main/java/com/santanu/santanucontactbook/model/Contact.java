@@ -19,6 +19,10 @@ public class Contact {
     public Contact() {
     }
 
+    public Contact(String name, String email, Long phone) {
+        this(null, name, email, phone);
+    }
+
     public Contact(Long id, String name, String email, Long phone) {
         this.id = id;
         this.name = name;
