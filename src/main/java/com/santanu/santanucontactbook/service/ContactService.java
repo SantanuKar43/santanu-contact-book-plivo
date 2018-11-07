@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -39,10 +41,21 @@ public class ContactService {
     }
 
     @Transactional
-    public Boolean updateContact(String email, String phone, String name) {
+    public Boolean updateContactByEmail(String email, Long phone, String name) {
         Contact contact = repository.findByEmail(email);
-        contact.updateFrom(name, phone.equals("") ? null : Long.parseLong(phone));
+        contact.updateFrom(name, phone);
         repository.save(contact);
         return true;
+    }
+
+    public Boolean updateContactById(Long id, String email, Long phone, String name) {
+        Contact contact = repository.findById(id).orElse(null);
+        if(Objects.nonNull(contact)) {
+            contact.updateFrom(name, phone);
+            if(!email.equals("")) contact.setEmail(email);
+            repository.save(contact);
+            return true;
+        }
+        return false;
     }
 }
