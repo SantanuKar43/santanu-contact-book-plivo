@@ -40,19 +40,39 @@ public class ContactController {
         }
     }
 
-    @PutMapping("/update/by_email")
-    public ResponseEntity<Boolean> updateContact(@RequestParam String email,
-                                                 @RequestParam(value = "phone", defaultValue = "", required = false) String phone,
-                                                 @RequestParam(value = "name", defaultValue = "", required = false) String name) {
+    @PutMapping("/update/by_id")
+    public ResponseEntity<Boolean> updateContactById(@RequestParam Long id,
+                                                     @RequestParam(value = "email", defaultValue = "", required = false) String email,
+                                                     @RequestParam(value = "phone", defaultValue = "", required = false) Long phone,
+                                                     @RequestParam(value = "name", defaultValue = "", required = false) String name) {
         try {
-            return ResponseEntity.ok(contactService.updateContact(email, phone, name));
+            return ResponseEntity.ok(contactService.updateContactById(id, email, phone, name));
         } catch(Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
         }
     }
 
+    @PutMapping("/update/by_email")
+    public ResponseEntity<Boolean> updateContact(@RequestParam String email,
+                                                 @RequestParam(value = "phone", defaultValue = "", required = false) Long phone,
+                                                 @RequestParam(value = "name", defaultValue = "", required = false) String name) {
+        try {
+            return ResponseEntity.ok(contactService.updateContactByEmail(email, phone, name));
+        } catch(Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
+        }
+    }
+
+    @DeleteMapping("/delete/by_id")
+    public ResponseEntity<Boolean> deleteContactById(@RequestParam Long id) {
+        try {
+            return ResponseEntity.ok(contactService.deleteContactById(id));
+        } catch(Exception ex) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
+        }
+    }
     @DeleteMapping("/delete/by_email")
-    public ResponseEntity<Boolean> deleteContact(@RequestParam String email) {
+    public ResponseEntity<Boolean> deleteContactByEmail(@RequestParam String email) {
         try {
             return ResponseEntity.ok(contactService.deleteContactByEmail(email));
         } catch(Exception ex) {
