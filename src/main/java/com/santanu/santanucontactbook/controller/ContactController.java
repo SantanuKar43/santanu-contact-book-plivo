@@ -53,7 +53,7 @@ public class ContactController {
     }
 
     @PutMapping("/update/by_email")
-    public ResponseEntity<Boolean> updateContact(@RequestParam String email,
+    public ResponseEntity<Boolean> updateContactByEmail(@RequestParam String email,
                                                  @RequestParam(value = "phone", defaultValue = "", required = false) Long phone,
                                                  @RequestParam(value = "name", defaultValue = "", required = false) String name) {
         try {
