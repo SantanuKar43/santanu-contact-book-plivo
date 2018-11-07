@@ -24,10 +24,12 @@ Deployed on heroku and added Swagger:
 * GET /api/search/by_email?email=*email*
 
 **Update**
+* PUT /api/update/by_id?id=*id*
 * PUT /api/update/by_email?email=*email*
 
 **Delete**
 * DELETE /api/delete/by_email?email=*email*
+* DELETE /api/delete/by_id?id=*id*
 
 Basic authentication added. Use following credentials:
 
